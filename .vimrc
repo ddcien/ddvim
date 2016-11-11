@@ -165,8 +165,9 @@ if isdirectory(expand("~/.vim/plugged/DoxygenToolkit.vim"))
     let g:DoxygenToolkit_authorName   = "Richard Lu <luqifeng@byhx-china.com>" 
     let g:DoxygenToolkit_versionString = "v1.0.0"
 endif
+
 if isdirectory(expand("~/.vim/plugged/eclim"))
-    "let g:EclimCompletionMethod = 'omnifunc'
+    let g:EclimCompletionMethod = 'omnifunc'
 endif
 
 " Key (re)Mappings
