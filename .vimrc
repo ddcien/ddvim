@@ -149,6 +149,7 @@ nnoremap Y y$
 
 if isdirectory(expand("~/.vim/plugged/vim-session")) 
     let g:session_autoload = 'no'
+    let g:session_autosave = 'no'
 endif
 
 if isdirectory(expand("~/.vim/plugged/vim-indent-guides")) 
