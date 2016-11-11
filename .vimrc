@@ -16,6 +16,7 @@ Plug 'tacahiroy/ctrlp-funky'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/gitignore'
 
 " Undotree management
 Plug 'mbbill/undotree'
