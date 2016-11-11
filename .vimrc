@@ -144,7 +144,6 @@ set foldmethod=syntax
 set nofoldenable
 
 
-nnoremap <ESC> :nohl<CR>
 nnoremap Y y$
 
 if isdirectory(expand("~/.vim/plugged/vim-session")) 
