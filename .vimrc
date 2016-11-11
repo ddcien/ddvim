@@ -22,6 +22,7 @@ Plug 'mbbill/undotree'
 
 " File Browser
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Tag view for current buffer
 Plug 'majutsushi/tagbar'
