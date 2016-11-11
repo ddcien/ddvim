@@ -46,7 +46,7 @@ Plug 'honza/vim-snippets'
 " TODO:
 " 
 
-" Easy test editing
+" Easy text editing
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
