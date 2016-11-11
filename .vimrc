@@ -33,7 +33,7 @@ Plug 'DoxygenToolkit.vim'
 
 " Code Complete
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 
 " Code Snippet
 Plug 'SirVer/ultisnips'
