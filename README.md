@@ -16,7 +16,7 @@ mkdir ~/.vim/plugged ~/.vim/backupdir ~/.vim/undodir
 
 # Enable ddvim
 # Please backup your original ~/.vimrc file !!!
-echo "source ~/.ddvim/.vimrc" > ~/ddvimrc
+echo "source ~/.ddvim/ddvimrc" > ~/.vimrc
 
 # Install plugins
 vim +PlugInstall
