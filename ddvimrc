@@ -86,15 +86,6 @@ call plug#end()
 
 filetype plugin indent on
 
-set background=dark
-let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
-let g:molokai_original = 1
-"colorscheme molokai
-colorscheme solarized
-syntax on
-syntax enable
-
 " General
 set mouse=a
 set mousehide
@@ -106,6 +97,9 @@ set cursorline
 set colorcolumn=110
 
 set number
+set relativenumber
+set numberwidth=4
+
 set showmatch
 set incsearch
 set hlsearch
@@ -121,6 +115,7 @@ set showcmd
 
 " status line
 set laststatus=2
+set backspace=2
 
 " formatting
 set nowrap
@@ -263,8 +258,16 @@ endif
 " GUI
 if has('gui_running')
     set guioptions=aiA
-    set guifont=Source\ Code\ Pro\ for\ Powerline\ Light\ 13
+    set guifont=Source\ Code\ Pro\ Light\ 15
+    let g:solarized_termcolors = 256
 endif
+
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
+syntax enable
+syntax on
+
 
 function! ResCur()
     if line("'\"") <= line("$")
