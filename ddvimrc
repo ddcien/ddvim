@@ -204,8 +204,8 @@ endif
 
 if isdirectory(expand("~/.vim/plugged/tagbar"))
     let g:tagbar_sort = 0
-    let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
     let g:tagbar_compact = 1
+    let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
     nnoremap <silent> <leader>tt :TagbarToggle<CR>
 endif
 
