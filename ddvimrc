@@ -68,6 +68,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 "Searching
 Plug 'dkprice/vim-easygrep'
+Plug 'rking/ag.vim'
 
 " Session management
 Plug 'xolox/vim-misc'
@@ -139,6 +140,7 @@ set undoreload=10000
 set foldmethod=syntax
 set nofoldenable
 
+set spell
 
 nnoremap Y y$
 
@@ -174,6 +176,8 @@ endif
 
 if isdirectory(expand("~/.vim/plugged/vim-gtags")) 
     let g:Gtags_Auto_Update = 1
+    let g:Gtags_Close_When_Single = 1
+    nmap <C-]> :Gtags<CR><CR>
 endif
 
 if isdirectory(expand("~/.vim/plugged/ctrlp.vim"))
@@ -194,7 +198,7 @@ augroup project
 augroup END
 
 if isdirectory(expand("~/.vim/plugged/nerdtree"))
-    let g:NERDShutUp = 1
+    let g:NERDTreeMinimalUI = 1
     map <C-e> :NERDTreeToggle<CR>
 endif
 if isdirectory(expand("~/.vim/plugged/matchit.zip"))
