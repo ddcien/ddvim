@@ -145,6 +145,22 @@ set spell
 
 nnoremap Y y$
 
+" GUI
+if has('gui_running')
+    set guioptions=aiA
+    set guifont=Source\ Code\ Pro\ Light\ 14
+    let g:solarized_termcolors = 256
+else
+    let g:solarized_termcolors = 16
+endif
+
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
+syntax enable
+syntax on
+
+
 if isdirectory(expand("~/.vim/plugged/vim-session")) 
     let g:session_autoload = 'no'
     let g:session_autosave = 'no'
@@ -185,7 +201,6 @@ endif
 
 if isdirectory(expand("~/.vim/plugged/vim-airline-themes"))
     let g:airline_powerline_fonts = 1
-    let g:airline_theme = 'solarized'
 endif
 
 augroup project
@@ -197,6 +212,7 @@ if isdirectory(expand("~/.vim/plugged/nerdtree"))
     let g:NERDTreeMinimalUI = 1
     map <C-e> :NERDTreeToggle<CR>
 endif
+
 if isdirectory(expand("~/.vim/plugged/matchit.zip"))
     let b:match_ignorecase = 1
 endif
@@ -253,22 +269,6 @@ if isdirectory(expand("~/.vim/plugged/undotree"))
     let g:undotree_SetFocusWhenToggle = 1
     nnoremap <silent> <leader>uu :UndotreeToggle<CR>
 endif
-
-
-" GUI
-if has('gui_running')
-    set guioptions=aiAf
-    set guifont=Source\ Code\ Pro\ Light\ 14
-    let g:solarized_termcolors = 256
-else
-    let g:solarized_termcolors = 16
-endif
-
-set background=dark
-let g:solarized_termtrans = 1
-colorscheme solarized
-syntax enable
-syntax on
 
 
 function! ResCur()
