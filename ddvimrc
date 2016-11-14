@@ -69,6 +69,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 "Searching
 Plug 'dkprice/vim-easygrep'
 Plug 'rking/ag.vim'
+Plug 'Chun-Yang/vim-action-ag'
 
 " Session management
 Plug 'xolox/vim-misc'
@@ -153,11 +154,6 @@ if isdirectory(expand("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
-endif
-
-if isdirectory(expand("~/.vim/plugged/vim-protodef"))
-    let g:disable_protodef_sorting = 1
-    let g:protodefprotogetter = '~/.vim/plugged/vim-protodef/pullproto.pl'
 endif
 
 if isdirectory(expand("~/.vim/plugged/DoxygenToolkit.vim"))
@@ -261,9 +257,11 @@ endif
 
 " GUI
 if has('gui_running')
-    set guioptions=aiA
-    set guifont=Source\ Code\ Pro\ Light\ 15
+    set guioptions=aiAf
+    set guifont=Source\ Code\ Pro\ Light\ 14
     let g:solarized_termcolors = 256
+else
+    let g:solarized_termcolors = 16
 endif
 
 set background=dark
