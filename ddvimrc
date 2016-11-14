@@ -141,7 +141,7 @@ set undoreload=10000
 set foldmethod=syntax
 set nofoldenable
 
-set spell
+"set spell
 
 nnoremap Y y$
 
