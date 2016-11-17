@@ -33,7 +33,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'DoxygenToolkit.vim'
 
 " Code Complete
-Plug 'Valloric/YouCompleteMe'
+Plug 'ddcien/YouCompleteMe',  {'branch': 'ddcien'}
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 
 " Code Snippet
@@ -193,6 +193,7 @@ if isdirectory(expand("~/.vim/plugged/vim-gtags"))
 endif
 
 if isdirectory(expand("~/.vim/plugged/ctrlp.vim"))
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 endif
 
 if isdirectory(expand("~/.vim/plugged/vim-easygrep"))
@@ -211,7 +212,7 @@ endif
 
 augroup project
     autocmd!
-    autocmd BufRead,BufNewFile *.[ch] set filetype=cpp.doxygen
+    autocmd BufRead,BufNewFile *.[ch] set filetype=c.doxygen
 augroup END
 
 if isdirectory(expand("~/.vim/plugged/nerdtree"))
@@ -268,8 +269,9 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_autoclose_preview_window_after_insertion = 1
 
     let g:ycm_goto_buffer_command = 'same-buffer'
-    let g:ycm_cache_omnifunc = 0
+    "let g:ycm_cache_omnifunc = 0
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
+    nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
 endif
 
 if isdirectory(expand("~/.vim/plugged/undotree"))
