@@ -81,6 +81,7 @@ Plug 'xolox/vim-session'
 Plug 'ddcien/vim-gtags'
 Plug 'Chiel92/vim-autoformat'
 Plug 'derekwyatt/vim-fswitch'
+Plug 'Valloric/ListToggle' "<leader>l: toggle location list; <leader>q: toggle quickfix list
 
 
 "Eclim
