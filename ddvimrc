@@ -2,6 +2,8 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
+" VIM-PLUG itself
+Plug 'junegunn/vim-plug'
 
 " Status Bar
 Plug 'vim-airline/vim-airline'
@@ -130,6 +132,7 @@ set nojoinspaces
 
 
 " Backups
+set directory=/tmp
 set backupdir=~/.vim/backupdir
 set backup
 
@@ -267,9 +270,11 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_add_preview_to_completeopt = 1
     let g:ycm_autoclose_preview_window_after_completion = 0
     let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_always_populate_location_list = 1
 
     let g:ycm_goto_buffer_command = 'same-buffer'
-    "let g:ycm_cache_omnifunc = 0
+    let g:ycm_show_diagnostics_ui = 1
+    let g:ycm_cache_omnifunc = 0
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
 endif
