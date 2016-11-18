@@ -102,7 +102,6 @@ set cursorline
 set colorcolumn=110
 
 set number
-set relativenumber
 set numberwidth=4
 
 set showmatch
@@ -164,6 +163,11 @@ endif
 syntax enable
 syntax on
 
+augroup RelativeNumber
+    autocmd!
+    autocmd InsertEnter * set relativenumber
+    autocmd InsertLeave * set norelativenumber
+augroup END
 
 if isdirectory(expand("~/.vim/plugged/vim-session")) 
     let g:session_autoload = 'no'
