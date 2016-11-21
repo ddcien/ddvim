@@ -69,7 +69,6 @@ Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
 
 "Searching
-Plug 'dkprice/vim-easygrep'
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 
@@ -150,7 +149,7 @@ nnoremap Y y$
 
 " GUI
 if has('gui_running')
-    set guioptions=aiA
+    set guioptions=aA
     set guifont=Hack\ Regular\ 10
     let g:solarized_termcolors = 256
     set background=dark
@@ -163,11 +162,12 @@ endif
 syntax enable
 syntax on
 
-augroup RelativeNumber
-    autocmd!
-    autocmd InsertEnter * set relativenumber
-    autocmd InsertLeave * set norelativenumber
-augroup END
+"set relativenumber
+"augroup RelativeNumber
+    "autocmd!
+    "autocmd InsertEnter * set norelativenumber
+    "autocmd InsertLeave * set relativenumber
+"augroup END
 
 if isdirectory(expand("~/.vim/plugged/vim-session")) 
     let g:session_autoload = 'no'
@@ -181,7 +181,7 @@ if isdirectory(expand("~/.vim/plugged/vim-indent-guides"))
 endif
 
 if isdirectory(expand("~/.vim/plugged/DoxygenToolkit.vim"))
-    let g:DoxygenToolkit_authorName   = "Richard Lu <luqifeng@byhx-china.com>" 
+    let g:DoxygenToolkit_authorName    = "Richard Lu <luqifeng@byhx-china.com>"
     let g:DoxygenToolkit_versionString = "v1.0.0"
 endif
 
@@ -195,7 +195,7 @@ if executable('ag')
 endif
 
 if isdirectory(expand("~/.vim/plugged/vim-gtags")) 
-    let g:Gtags_Auto_Update = 1
+    let g:Gtags_Auto_Update       = 1
     let g:Gtags_Close_When_Single = 1
     nmap <C-]> :Gtags<CR><CR>
 endif
@@ -204,13 +204,8 @@ if isdirectory(expand("~/.vim/plugged/ctrlp.vim"))
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 endif
 
-if isdirectory(expand("~/.vim/plugged/vim-easygrep"))
-    let g:EasyGrepCommand = 1
-endif
-
 if isdirectory(expand("~/.vim/plugged/vim-airline-themes"))
     let g:airline_powerline_fonts = 1
-    
     if has('gui_running')
         let g:airline_theme = 'solarized'
     else
@@ -234,8 +229,8 @@ endif
 
 
 if isdirectory(expand("~/.vim/plugged/tagbar"))
-    let g:tagbar_sort = 0
-    let g:tagbar_compact = 1
+    let g:tagbar_sort      = 0
+    let g:tagbar_compact   = 1
     let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
     nnoremap <silent> <leader>tt :TagbarToggle<CR>
 endif
@@ -261,25 +256,23 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     set completeopt-=preview
 
     " UltiSnips
-    let g:ycm_use_ultisnips_completer = 1
-    let g:UltiSnipsExpandTrigger = '<C-j>'
-    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-
-    let g:ycm_complete_in_comments = 1
-    let g:ycm_complete_in_strings = 1
+    let g:ycm_use_ultisnips_completer                       = 1
+    let g:UltiSnipsExpandTrigger                            = '<C-j>'
+    let g:UltiSnipsJumpForwardTrigger                       = '<C-j>'
+    let g:UltiSnipsJumpBackwardTrigger                      = '<C-k>'
+    let g:ycm_complete_in_comments                          = 1
+    let g:ycm_complete_in_strings                           = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 0
-    let g:ycm_collect_identifiers_from_tags_files = 0
-    let g:ycm_seed_identifiers_with_syntax = 1
-
-    let g:ycm_add_preview_to_completeopt = 1
-    let g:ycm_autoclose_preview_window_after_completion = 0
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    let g:ycm_always_populate_location_list = 1
-
-    let g:ycm_goto_buffer_command = 'same-buffer'
-    let g:ycm_show_diagnostics_ui = 1
-    let g:ycm_cache_omnifunc = 0
+    let g:ycm_collect_identifiers_from_tags_files           = 0
+    let g:ycm_seed_identifiers_with_syntax                  = 1
+    let g:ycm_add_preview_to_completeopt                    = 1
+    let g:ycm_autoclose_preview_window_after_completion     = 0
+    let g:ycm_autoclose_preview_window_after_insertion      = 1
+    let g:ycm_always_populate_location_list                 = 1
+    let g:ycm_goto_buffer_command                           = 'same-buffer'
+    let g:ycm_show_diagnostics_ui                           = 1
+    let g:ycm_cache_omnifunc                                = 0
+    
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
 endif
