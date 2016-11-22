@@ -149,25 +149,16 @@ nnoremap Y y$
 
 " GUI
 if has('gui_running')
-    set guioptions=aA
+    set guioptions=a
     set guifont=Hack\ Regular\ 10
-    let g:solarized_termcolors = 256
-    set background=dark
-    let g:solarized_termtrans = 1
-    colorscheme solarized
-else
-    colorscheme molokai
 endif
+let g:solarized_termcolors = 256
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
 
 syntax enable
 syntax on
-
-"set relativenumber
-"augroup RelativeNumber
-    "autocmd!
-    "autocmd InsertEnter * set norelativenumber
-    "autocmd InsertLeave * set relativenumber
-"augroup END
 
 if isdirectory(expand("~/.vim/plugged/vim-session")) 
     let g:session_autoload = 'no'
@@ -206,11 +197,7 @@ endif
 
 if isdirectory(expand("~/.vim/plugged/vim-airline-themes"))
     let g:airline_powerline_fonts = 1
-    if has('gui_running')
-        let g:airline_theme = 'solarized'
-    else
-        let g:airline_theme = 'molokai'
-    endif
+    let g:airline_theme = 'solarized'
 endif
 
 augroup project
@@ -256,10 +243,11 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     set completeopt-=preview
 
     " UltiSnips
-    let g:ycm_use_ultisnips_completer                       = 1
-    let g:UltiSnipsExpandTrigger                            = '<C-j>'
-    let g:UltiSnipsJumpForwardTrigger                       = '<C-j>'
-    let g:UltiSnipsJumpBackwardTrigger                      = '<C-k>'
+    let g:ycm_use_ultisnips_completer  = 1
+    let g:UltiSnipsExpandTrigger       = '<C-j>'
+    let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+    
     let g:ycm_complete_in_comments                          = 1
     let g:ycm_complete_in_strings                           = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 0
@@ -271,7 +259,11 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_always_populate_location_list                 = 1
     let g:ycm_goto_buffer_command                           = 'same-buffer'
     let g:ycm_show_diagnostics_ui                           = 1
-    let g:ycm_cache_omnifunc                                = 0
+    
+    let g:ycm_cache_omnifunc        = 0
+    let g:ycm_extra_conf_vim_data   = [ '&filetype' ]
+    let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+    let g:ycm_confirm_extra_conf    = 0
     
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
