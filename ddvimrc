@@ -12,7 +12,6 @@ Plug 'bling/vim-bufferline'
 
 " Quickly open files, buffers and MRU
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
 
 
 " Git
@@ -86,7 +85,10 @@ Plug 'Valloric/ListToggle' "<leader>l: toggle location list; <leader>q: toggle q
 "Eclim
 Plug 'ddcien/eclim'
 
+Plug 'vim-jp/vim-cpp'
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
+
 
 filetype plugin indent on
 
@@ -202,11 +204,13 @@ endif
 
 augroup project
     autocmd!
-    autocmd BufRead,BufNewFile *.[ch] set filetype=c.doxygen
+    autocmd BufRead,BufNewFile *.[ch] set filetype=c
 augroup END
 
 if isdirectory(expand("~/.vim/plugged/nerdtree"))
+    let g:NERDShutUp=1
     let g:NERDTreeMinimalUI = 1
+    let g:NERDTreeRespectWildIgnore = 1
     map <C-e> :NERDTreeToggle<CR>
 endif
 
@@ -253,14 +257,17 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_collect_identifiers_from_comments_and_strings = 0
     let g:ycm_collect_identifiers_from_tags_files           = 0
     let g:ycm_seed_identifiers_with_syntax                  = 1
-    let g:ycm_add_preview_to_completeopt                    = 1
-    let g:ycm_autoclose_preview_window_after_completion     = 0
-    let g:ycm_autoclose_preview_window_after_insertion      = 1
-    let g:ycm_always_populate_location_list                 = 1
-    let g:ycm_goto_buffer_command                           = 'same-buffer'
-    let g:ycm_show_diagnostics_ui                           = 1
     
-    let g:ycm_cache_omnifunc        = 0
+    let g:ycm_add_preview_to_completeopt                = 1
+    let g:ycm_autoclose_preview_window_after_completion = 0
+    let g:ycm_autoclose_preview_window_after_insertion  = 1
+   
+    let g:ycm_always_populate_location_list = 1
+
+    let g:ycm_goto_buffer_command = 'same-buffer'
+    let g:ycm_show_diagnostics_ui = 1
+    let g:ycm_cache_omnifunc      = 1
+
     let g:ycm_extra_conf_vim_data   = [ '&filetype' ]
     let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
     let g:ycm_confirm_extra_conf    = 0
