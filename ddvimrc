@@ -8,7 +8,6 @@ Plug 'junegunn/vim-plug'
 " Status Bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
 
 " Quickly open files, buffers and MRU
 Plug 'ctrlpvim/ctrlp.vim'
@@ -46,7 +45,7 @@ Plug 'honza/vim-snippets'
 
 " Encoding Detection
 " TODO:
-" 
+"
 
 " Easy text editing
 Plug 'easymotion/vim-easymotion'
@@ -68,8 +67,10 @@ Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
 
 "Searching
-Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
+
+Plug 'mileszs/ack.vim'
+
+
 
 " Session management
 Plug 'xolox/vim-misc'
@@ -85,9 +86,13 @@ Plug 'Valloric/ListToggle' "<leader>l: toggle location list; <leader>q: toggle q
 "Eclim
 Plug 'ddcien/eclim'
 
-Plug 'vim-jp/vim-cpp'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'klen/python-mode'
+
+Plug 'lilydjwg/fcitx.vim'
+Plug 'alisdair/vim-armasm'
 call plug#end()
+
 
 
 filetype plugin indent on
@@ -145,6 +150,8 @@ set undoreload=10000
 set foldmethod=syntax
 set nofoldenable
 
+set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
+
 "set spell
 
 nnoremap Y y$
@@ -162,12 +169,13 @@ colorscheme solarized
 syntax enable
 syntax on
 
-if isdirectory(expand("~/.vim/plugged/vim-session")) 
+
+if isdirectory(expand("~/.vim/plugged/vim-session"))
     let g:session_autoload = 'no'
     let g:session_autosave = 'no'
 endif
 
-if isdirectory(expand("~/.vim/plugged/vim-indent-guides")) 
+if isdirectory(expand("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
@@ -182,30 +190,18 @@ if isdirectory(expand("~/.vim/plugged/eclim"))
     let g:EclimCompletionMethod = 'omnifunc'
 endif
 
-" Key (re)Mappings
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
 
-if isdirectory(expand("~/.vim/plugged/vim-gtags")) 
+if isdirectory(expand("~/.vim/plugged/vim-gtags"))
     let g:Gtags_Auto_Update       = 1
     let g:Gtags_Close_When_Single = 1
     nmap <C-]> :Gtags<CR><CR>
 endif
 
-if isdirectory(expand("~/.vim/plugged/ctrlp.vim"))
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-endif
 
 if isdirectory(expand("~/.vim/plugged/vim-airline-themes"))
     let g:airline_powerline_fonts = 1
     let g:airline_theme = 'solarized'
 endif
-
-augroup project
-    autocmd!
-    autocmd BufRead,BufNewFile *.[ch] set filetype=c
-augroup END
 
 if isdirectory(expand("~/.vim/plugged/nerdtree"))
     let g:NERDShutUp=1
@@ -218,6 +214,9 @@ if isdirectory(expand("~/.vim/plugged/matchit.zip"))
     let b:match_ignorecase = 1
 endif
 
+if isdirectory(expand("~/.vim/plugged/ack.vim")) 
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 if isdirectory(expand("~/.vim/plugged/tagbar"))
     let g:tagbar_sort      = 0
@@ -243,6 +242,21 @@ if isdirectory(expand("~/.vim/plugged/vim-fugitive"))
     nnoremap <silent> <leader>gi :Git add -p %<CR>
 endif
 
+if isdirectory(expand("~/.vim/plugged/ctrlp.vim/"))
+    let g:ctrlp_working_path_mode = 'ra'
+    let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+        \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+    let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+    let g:ctrlp_user_command = {
+        \ 'types': {
+            \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+        \ },
+        \ 'fallback': s:ctrlp_fallback
+    \ }
+endif
+
 if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     set completeopt-=preview
 
@@ -251,17 +265,17 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:UltiSnipsExpandTrigger       = '<C-j>'
     let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-    
+
     let g:ycm_complete_in_comments                          = 1
     let g:ycm_complete_in_strings                           = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 0
     let g:ycm_collect_identifiers_from_tags_files           = 0
     let g:ycm_seed_identifiers_with_syntax                  = 1
-    
+
     let g:ycm_add_preview_to_completeopt                = 1
     let g:ycm_autoclose_preview_window_after_completion = 0
     let g:ycm_autoclose_preview_window_after_insertion  = 1
-   
+
     let g:ycm_always_populate_location_list = 1
 
     let g:ycm_goto_buffer_command = 'same-buffer'
@@ -271,7 +285,7 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_extra_conf_vim_data   = [ '&filetype' ]
     let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
     let g:ycm_confirm_extra_conf    = 0
-    
+
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
 endif
@@ -281,6 +295,12 @@ if isdirectory(expand("~/.vim/plugged/undotree"))
     nnoremap <silent> <leader>uu :UndotreeToggle<CR>
 endif
 
+
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.[ch] set filetype=c
+    autocmd BufRead,BufNewFile *.[sS] set filetype=armasm
+augroup END
 
 function! ResCur()
     if line("'\"") <= line("$")
@@ -293,3 +313,18 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
+
+function! StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+
