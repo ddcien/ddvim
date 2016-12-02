@@ -70,12 +70,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'mileszs/ack.vim'
 
-
-
-" Session management
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
 " Utils
 Plug 'ddcien/vim-gtags'
 Plug 'Chiel92/vim-autoformat'
@@ -91,6 +85,22 @@ Plug 'klen/python-mode'
 
 Plug 'lilydjwg/fcitx.vim'
 Plug 'alisdair/vim-armasm'
+
+
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'mhinz/vim-startify'
+"let g:startify_change_to_dir = 0
+"let g:startify_change_to_vcs_root = 1
+"let g:startify_padding_left = 3
+"let g:startify_update_oldfiles = 1
+
+"let g:startify_session_autoload = 1
+"let g:startify_session_persistence = 1
+"let g:startify_session_delete_buffers = 1
+
+"let g:startify_list_order = [ 'sessions', 'files', 'dir', 'bookmarks', 'commands']
+
 call plug#end()
 
 
@@ -169,12 +179,6 @@ colorscheme solarized
 syntax enable
 syntax on
 
-
-if isdirectory(expand("~/.vim/plugged/vim-session"))
-    let g:session_autoload = 'no'
-    let g:session_autosave = 'no'
-endif
-
 if isdirectory(expand("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_start_level = 2
@@ -214,7 +218,7 @@ if isdirectory(expand("~/.vim/plugged/matchit.zip"))
     let b:match_ignorecase = 1
 endif
 
-if isdirectory(expand("~/.vim/plugged/ack.vim")) 
+if isdirectory(expand("~/.vim/plugged/ack.vim"))
     let g:ackprg = 'ag --vimgrep'
 endif
 
@@ -245,16 +249,16 @@ endif
 if isdirectory(expand("~/.vim/plugged/ctrlp.vim/"))
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-        \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
     let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
     let g:ctrlp_user_command = {
-        \ 'types': {
-            \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-        \ },
-        \ 'fallback': s:ctrlp_fallback
-    \ }
+                \ 'types': {
+                \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                \ },
+                \ 'fallback': s:ctrlp_fallback
+                \ }
 endif
 
 if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
@@ -282,9 +286,9 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_show_diagnostics_ui = 1
     let g:ycm_cache_omnifunc      = 1
 
-    let g:ycm_extra_conf_vim_data   = [ '&filetype' ]
-    let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-    let g:ycm_confirm_extra_conf    = 0
+    "let g:ycm_extra_conf_vim_data   = [ '&filetype' ]
+    "let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+    "let g:ycm_confirm_extra_conf    = 0
 
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
