@@ -169,9 +169,11 @@ nnoremap Y y$
 " GUI
 if has('gui_running')
     set guioptions=a
-    set guifont=Hack\ Regular\ 10
+    set guifont=Hack\ Regular\ 12
+    let g:solarized_termcolors = 256
+else
+    let g:solarized_termcolors = 16
 endif
-let g:solarized_termcolors = 256
 set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
