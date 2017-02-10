@@ -12,7 +12,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Quickly open files, buffers and MRU
 Plug 'ctrlpvim/ctrlp.vim'
 
-
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -40,66 +39,43 @@ Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" Syntax Check
-"Plug 'vim-syntastic/syntastic'
-
-" Encoding Detection
-" TODO:
-"
-
 " Easy text editing
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'    
+Plug 'tpope/vim-repeat'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'matchit.zip'
 Plug 'godlygeek/tabular'
-Plug 'kshenoy/vim-signature'
-Plug 'vim-scripts/LargeFile'
 
-" Color
+" Easy moving
+Plug 'easymotion/vim-easymotion'
+
+" Colors 
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 
+
 " UI
 Plug 'luochen1990/rainbow'
+Plug 'kshenoy/vim-signature'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ryanoasis/vim-devicons'
 
-"Searching
-
+" Searching
 Plug 'mileszs/ack.vim'
 
-" Utils
+
+" Program utils
 Plug 'ddcien/vim-gtags'
 Plug 'Chiel92/vim-autoformat'
 Plug 'derekwyatt/vim-fswitch'
-Plug 'Valloric/ListToggle' "<leader>l: toggle location list; <leader>q: toggle quickfix list
-
-
-"Eclim
-Plug 'ddcien/eclim'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'klen/python-mode'
-
-Plug 'lilydjwg/fcitx.vim'
 Plug 'alisdair/vim-armasm'
+Plug 'gilligan/vim-lldb'
 
-
-Plug 'ryanoasis/vim-devicons'
-
+" Misc
+Plug 'mrmargolis/dogmatic.vim'
 Plug 'mhinz/vim-startify'
-"let g:startify_change_to_dir = 0
-"let g:startify_change_to_vcs_root = 1
-"let g:startify_padding_left = 3
-"let g:startify_update_oldfiles = 1
-
-"let g:startify_session_autoload = 1
-"let g:startify_session_persistence = 1
-"let g:startify_session_delete_buffers = 1
-
-"let g:startify_list_order = [ 'sessions', 'files', 'dir', 'bookmarks', 'commands']
 
 call plug#end()
 
@@ -193,7 +169,6 @@ endif
 if isdirectory(expand("~/.vim/plugged/eclim"))
     let g:EclimCompletionMethod = 'omnifunc'
 endif
-
 
 if isdirectory(expand("~/.vim/plugged/vim-gtags"))
     let g:Gtags_Auto_Update       = 1
@@ -292,6 +267,8 @@ if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
 
     nnoremap <silent> <leader>gg :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>rr :YcmCompleter GetReferences<CR>
+    nnoremap <silent> <leader>ff :YcmCompleter FixIt<CR>
+    "nnoremap <silent> <leader>tt :YcmCompleter GetType<CR>
 endif
 
 if isdirectory(expand("~/.vim/plugged/undotree"))
@@ -299,6 +276,16 @@ if isdirectory(expand("~/.vim/plugged/undotree"))
     nnoremap <silent> <leader>uu :UndotreeToggle<CR>
 endif
 
+if isdirectory(expand("~/.vim/plugged/vim-startify"))
+    let g:startify_change_to_dir = 0
+    let g:startify_change_to_vcs_root = 1
+    let g:startify_padding_left = 3
+    let g:startify_update_oldfiles = 1
+    let g:startify_session_autoload = 1
+    let g:startify_session_persistence = 1
+    let g:startify_session_delete_buffers = 1
+    let g:startify_list_order = [ 'sessions', 'files', 'dir', 'bookmarks', 'commands']
+endif 
 
 augroup project
     autocmd!
