@@ -144,8 +144,8 @@ let g:ale_fix_on_save = 0
 let g:ale_completion_enabled = 0
 let g:ale_linters = {
             \ 'asm': [],
-            \ 'c': [],
-            \ 'cpp': [],
+            \ 'c': ['cppcheck'],
+            \ 'cpp': ['cppcheck'],
             \ 'vim': ['vint'],
             \ 'cmake': ['cmakelint'],
             \ 'python': ['pycodestyle'],
