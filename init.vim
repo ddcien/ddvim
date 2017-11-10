@@ -255,7 +255,6 @@ let $FZF_DEFAULT_OPTS .= ' --inline-info'
 let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor --nogroup -g ""'
 let g:fzf_layout = { 'down': '~30%' }
 
-
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 " }}}
@@ -263,7 +262,8 @@ call plug#end()
 " Setting  {{{
 set number
 set numberwidth=4
-set mouse=a
+set mouse-=a
+set mousehide
 set smartindent
 set lazyredraw
 set showcmd
