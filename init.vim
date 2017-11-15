@@ -14,7 +14,7 @@ Plug 'vim-scripts/gitignore.vim' " Gitignore files support
 Plug 'junegunn/gv.vim', {'on': ['GV', 'GV!']}
 " }}}
 " }}}
-"
+
 " Edit {{{
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -80,8 +80,8 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files           = 0
 let g:ycm_seed_identifiers_with_syntax                  = 1
 let g:ycm_add_preview_to_completeopt                = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion  = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion  = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_auto_start_csharp_server = 0
 let g:ycm_always_populate_location_list = 1
@@ -103,13 +103,11 @@ xmap gs <plug>(GrepperOperator)
 " }}}
 
 " Colors {{{
-" Plug 'altercation/vim-colors-solarized'
 Plug 'icymind/NeoSolarized'
 Plug 'MaxSt/FlatColor'
 Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-janah'
-
 Plug 'tomasr/molokai'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'morhetz/gruvbox'
@@ -142,15 +140,15 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:ale_fix_on_save = 0
 let g:ale_completion_enabled = 0
-let g:ale_linters = {
-            \ 'asm': [],
-            \ 'c': ['cppcheck'],
-            \ 'cpp': ['cppcheck'],
-            \ 'vim': ['vint'],
-            \ 'cmake': ['cmakelint'],
-            \ 'python': ['pycodestyle'],
-            \ 'markdown': ['proselint', 'remark-lint', 'vale', 'write-good']
-            \}
+let g:ale_linters = {}
+let g:ale_linters['vim'] = ['vint']
+let g:ale_linters['c'] = ['cppcheck', 'clangtidy']
+let g:ale_linters['cpp'] = ['cppcheck', 'clangtidy']
+let g:ale_linters['cmake'] = ['cmakelint']
+let g:ale_linters['python'] = ['flake8']
+let g:ale_linters['markdown'] = ['proselint', 'remark-lint', 'vale']
+
+let g:ale_fixers = {}
 " }}}
 
 " Languages {{{
@@ -216,13 +214,6 @@ augroup PYTHON
     autocmd!
     autocmd FileType python BracelessEnable +indent
 augroup END
-
-Plug 'python-mode/python-mode', {'for': 'python' }
-let g:pymode_python = 'python3'
-let g:pymode = 1
-let g:pymode_lint = 0  " Using ALE instead
-let g:pymode_rope_autoimport = 1
-
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 " }}}
 
@@ -235,6 +226,7 @@ Plug 'sheerun/vim-polyglot'
 " }}}
 " }}}
 
+" Utils {{{
 Plug 'wikitopian/hardmode'
 let g:HardMode_level = 'wannabe'
 augroup HARDMODE
@@ -256,14 +248,15 @@ let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor --nogroup -g ""'
 let g:fzf_layout = { 'down': '~30%' }
 
 Plug 'wakatime/vim-wakatime'
+" }}}
 call plug#end()
 " }}}
 
 " Setting  {{{
 set number
 set numberwidth=4
-set mouse-=a
-set mousehide
+" set mouse-=a
+" set mousehide
 set smartindent
 set lazyredraw
 set showcmd
@@ -310,6 +303,8 @@ set undofile
 set directory=/tmp
 set backupdir=~/.vim/backupdir
 set backup
+
+set foldmethod=syntax
 " }}}
 
 " Key bindings {{{
@@ -322,6 +317,10 @@ if has('gui_running')
     set guifont=Anonymous\ Pro\ for\ Powerline\ Regular\ 12
 endif
 " }}}
+
+" Color setting {{{
 set background=dark
 let g:neosolarized_italic = 1
 colorschem NeoSolarized
+" }}}
+
