@@ -114,7 +114,9 @@ Plug 'morhetz/gruvbox'
 " }}}
 
 " Comment {{{
-Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims = 1
+
 Plug 'vim-scripts/DoxygenToolkit.vim'
 let g:DoxygenToolkit_briefTag_pre ='@Synopsis  '
 let g:DoxygenToolkit_paramTag_pre ='@Param '
@@ -200,12 +202,11 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
 Plug 'ddcien/vim-gtags', {'for': ['c', 'cpp']}
-if has_key(g:plugs, 'vim-gtags')
-    let g:Gtags_Auto_Update       = 1
-    let g:Gtags_Close_When_Single = 1
-    nmap <C-]> :Gtags<CR><CR>
-endif
+let g:Gtags_Auto_Update       = 1
+let g:Gtags_Close_When_Single = 1
+nmap <C-]> :Gtags<CR><CR>
 " }}}
+
 
 " Python {{{
 Plug 'tweekmonster/impsort.vim', {'for': 'python'}
