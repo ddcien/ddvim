@@ -29,6 +29,8 @@ Plug 'ddcien/ici.vim'
 " Browsing {{{
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-startify'
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
 Plug 'junegunn/rainbow_parentheses.vim'
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
@@ -144,8 +146,8 @@ let g:ale_fix_on_save = 0
 let g:ale_completion_enabled = 0
 let g:ale_linters = {}
 let g:ale_linters['vim'] = ['vint']
-let g:ale_linters['c'] = ['cppcheck', 'clangtidy']
-let g:ale_linters['cpp'] = ['cppcheck', 'clangtidy']
+let g:ale_linters['c'] = ['clangtidy']
+let g:ale_linters['cpp'] = ['clangtidy']
 let g:ale_linters['cmake'] = ['cmakelint']
 let g:ale_linters['python'] = ['flake8']
 let g:ale_linters['markdown'] = ['proselint', 'remark-lint', 'vale']
@@ -201,7 +203,7 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
-Plug 'ddcien/vim-gtags', {'for': ['c', 'cpp']}
+Plug 'ddcien/vim-gtags'
 let g:Gtags_Auto_Update       = 1
 let g:Gtags_Close_When_Single = 1
 nmap <C-]> :Gtags<CR><CR>
@@ -320,8 +322,6 @@ endif
 " }}}
 
 " Color setting {{{
-set background=dark
-let g:neosolarized_italic = 1
-colorschem NeoSolarized
+colorscheme onedark
 " }}}
 
